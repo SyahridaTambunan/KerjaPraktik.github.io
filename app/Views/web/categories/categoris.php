@@ -29,13 +29,10 @@
             </div>
         </div>
 
-<<<<<<< HEAD:app/Views/web/categories/categoris.php
-=======
         <!-- add category categories here -->
 
         <!-- Pending Requests Card Example -->
 
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/categoris.php
     </div>
 </div>
 <!-- /.container-fluid -->
@@ -48,37 +45,19 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-<<<<<<< HEAD:app/Views/web/categories/categoris.php
-                        <th>Kategori</th>
-                        <th>Aksi</th>
-=======
                         <th>Category Name</th>
                         <th>Category ID</th>
                         <th>Actions</th>
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/categoris.php
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($tes as $testes) : ?>
                         <tr>
-<<<<<<< HEAD:app/Views/web/categories/categoris.php
-                            <th><?= $testes['CategoryName']; ?></th>
-                            <td>
-                                <!-- Tombol Edit -->
-                                <a href="<?= site_url('inventaris/edit/'); ?>" class="btn btn-warning btn-sm">Edit</a>
-
-                                <!-- Tombol Hapus -->
-                                <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">
-                                    <input type="hidden" name="ItemID" value="">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                                </form>
-=======
                             <td><?= $testes['CategoryName']; ?></td>
                             <td><?= $testes['CategoryID']; ?></td>
                             <td>
                                 <a href="<?= base_url('categories/edit/' . $testes['CategoryID']) ?>" class="btn btn-primary btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm delete-btn" data-id="<?= $testes['CategoryID'] ?>">Delete</button>
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/categoris.php
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -90,8 +69,6 @@
 
 </div>
 
-<<<<<<< HEAD:app/Views/web/categories/categoris.php
-=======
 <?php $this->section('script') ?>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -140,7 +117,5 @@
                     <?php endforeach; ?>
     });
 </script>
-<?php $this->endSection('script') ?>
 <!-- /.container-fluid -->
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/categoris.php
 <?php $this->endSection() ?>

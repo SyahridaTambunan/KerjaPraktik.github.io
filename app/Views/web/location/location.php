@@ -44,33 +44,14 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-<<<<<<< HEAD:app/Views/web/location/location.php
-                        <th>Lokasi</th>
-                        <th>Deskripsi Lokasi</th>
-                        <th>Aksi</th>
-=======
                         <th>LocationName</th>
                         <th>LocationID</th>
                         <th>Action</th>
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/Location.php
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($tes as $testes) : ?>
                         <tr>
-<<<<<<< HEAD:app/Views/web/location/location.php
-                            <th><?= $testes['LocationName']; ?></th>
-                            <th><?= $testes['LocationDescription']; ?></th>
-                            <td>
-                                <!-- Tombol Edit -->
-                                <a href="<?= site_url('location/edit/' . $testes['LocationID']); ?>" class="btn btn-warning btn-sm">Edit</a>
-
-                                <!-- Tombol Hapus -->
-                                <form action="<?= site_url('location/delete'); ?>" method="post" style="display:inline;">
-                                    <input type="hidden" name="LocationID" value="<?= $testes['LocationID']; ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                                </form>
-=======
                             <td><?= $testes['LocationName']; ?></td>
                             <td><?= $testes['LocationID']; ?></td>
                             <td>
@@ -80,7 +61,6 @@
                                 <a href="<?= base_url('location/delete/' . $testes['LocationID']); ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
                                     <i class="fas fa-trash"></i>
                                 </a>
->>>>>>> f0739b35dbdaa6d4faa7fa21a683f14dbc1d5754:app/Views/Location.php
                             </td>
                         </tr>
                     <?php endforeach; ?>
