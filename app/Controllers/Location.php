@@ -16,6 +16,7 @@ class Location extends BaseController
         $this->model = new ItemModel();
         $this->locationModel = new LocationModel();
     }
+
     public function index()
     {
         $data['tes'] = $this->locationModel->findAll();
@@ -86,6 +87,21 @@ class Location extends BaseController
             return redirect()->to(base_url('location/index'))->with('status', 'Data successfully deleted');
         } else {
             return redirect()->to(base_url('location/index'))->with('status', 'Invalid Location ID');
+        }
+    }
+    public function update($location)
+    {
+        $model = new LocationModel();
+
+        $data = [
+            'LocationName' => $this->request->getPost('LocationName'),
+            'LacationDescription' => $this->request->getPost('LocationDescription'),
+        ];
+
+        if ($model->update($location, $data)) {
+            return redirect()->to('/inventaris')->with('success', 'Data berhasil diperbarui');
+        } else {
+            return redirect()->back()->with('errors', $model->errors())->withInput();
         }
     }
 }

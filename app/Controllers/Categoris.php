@@ -62,4 +62,18 @@ class Categoris extends BaseController
         $data['kategori'] = $this->category->find($id);
         return view('web/categories/edit', $data);
     }
+    public function delete($id = null)
+    {
+        if ($id === null) {
+            return redirect()->to('/category')->with('error', 'Category ID is missing');
+        }
+
+        $model = new CategoryModel();
+
+        if ($model->delete($id)) {
+            return redirect()->to('/category')->with('success', 'category deleted successfully');
+        } else {
+            return redirect()->to('/category')->with('error', 'Failed to delete category');
+        }
+    }
 }
