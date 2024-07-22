@@ -61,4 +61,53 @@ class Categoris extends BaseController
     {
         return view('web/addlocation');
     }
+    public function edit($id)
+    {
+        $CategoryModel = new CategoryModel();
+        $session = session();
+
+        $location = $CategoryModel->find($id);
+        if (!$location) {
+            $session->setFlashdata('errors', 'Category not found.');
+            return redirect()->to('/categories');
+        }
+
+        // Validasi input
+        $rules = [
+            'CategoryName' => 'required|min_length[3]|max_length[255]'
+        ];
+
+        if ($this->request->getMethod() === 'post' && !$this->validate($rules)) {
+            $session->setFlashdata('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        if ($this->request->getMethod() === 'post') {
+            // Update data categories
+            $data = [
+                'CategoryName' => $this->request->getVar('CategoryName')
+            ];
+
+            $location->update($id, $data);
+            $session->setFlashdata('success', 'Categories updated successfully!');
+            return redirect()->to('/categories');
+        }
+
+        $data['categories'] = $location;
+        return view('web/editcategories', $data);
+    }
+    public function delete($id = null)
+    {
+        if ($id === null) {
+            return redirect()->to('/category')->with('error', 'Category ID is missing');
+        }
+
+        $model = new CategoryModel();
+
+        if ($model->delete($id)) {
+            return redirect()->to('/category')->with('success', 'category deleted successfully');
+        } else {
+            return redirect()->to('/category')->with('error', 'Failed to delete category');
+        }
+    }
 }

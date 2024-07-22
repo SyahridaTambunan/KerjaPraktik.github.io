@@ -112,5 +112,61 @@ class Inventaris extends BaseController
     }
     public function edit($id)
     {
+        $model = new ItemModel();
+
+        // Retrieve the item details
+        $data['item'] = $model->find($id);
+
+        if ($this->request->getMethod() == 'post') {
+            // Get POST data
+            $postData = [
+                'ItemID' => $this->request->getPost('ItemID'),
+                'ItemName' => $this->request->getPost('ItemName'),
+                'ItemDescription' => $this->request->getPost('ItemDescription'),
+                // Add other fields as necessary
+            ];
+
+            // Validation rules
+            $validationRules = [
+                'ItemName' => 'required|min_length[3]',
+                'ItemDescription' => 'required|min_length[5]',
+                // Add other validation rules as necessary
+            ];
+
+            // Validate the form data
+            if ($this->validate($validationRules)) {
+                // Update the item in the database
+                $model->update($id, $postData);
+
+                // Redirect to the index page or another page
+                return redirect()->to('/index');
+            } else {
+                // If validation fails, pass validation errors to the view
+                $data['validation'] = $this->validator;
+            }
+        }
+
+        // Load the edit view with the item data and validation errors (if any)
+        return view('items/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $model = new ItemModel();
+
+        $data = [
+            'ItemName' => $this->request->getPost('ItemName'),
+            'CategoryID' => $this->request->getPost('CategoryID'),
+            'LocationID' => $this->request->getPost('LocationID'),
+            'Quantity' => $this->request->getPost('Quantity'),
+            'PurchaseDate' => $this->request->getPost('PurchaseDate'),
+            'Price' => $this->request->getPost('Price'),
+        ];
+
+        if ($model->update($id, $data)) {
+            return redirect()->to('/inventaris')->with('success', 'Data berhasil diperbarui');
+        } else {
+            return redirect()->back()->with('errors', $model->errors())->withInput();
+        }
     }
 }

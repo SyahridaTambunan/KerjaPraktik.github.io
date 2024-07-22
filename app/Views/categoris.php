@@ -17,7 +17,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="my-2"></div>
                         <!-- add category categories here -->
-                        <a href="<?= base_url() ?>categoris/create" class="btn btn-secondary btn-icon-split">
+                        <a href="<?= base_url() ?>categories/create" class="btn btn-secondary btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -30,7 +30,6 @@
         </div>
 
         <!-- add category categories here -->
-
 
         <!-- Pending Requests Card Example -->
 
@@ -46,16 +45,20 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>CategoryName</th>
+                        <th>Category Name</th>
                         <th>Category ID</th>
+                        <th>Actions</th>
                     </tr>
-
                 </thead>
                 <tbody>
                     <?php foreach ($tes as $testes) : ?>
                         <tr>
-                            <th><?= $testes['CategoryName']; ?></th>
-                            <th><?= $testes['CategoryID']; ?></th>
+                            <td><?= $testes['CategoryName']; ?></td>
+                            <td><?= $testes['CategoryID']; ?></td>
+                            <td>
+                                <a href="<?= base_url('categories/edit/' . $testes['CategoryID']) ?>" class="btn btn-primary btn-sm">Edit</a>
+                                <button class="btn btn-danger btn-sm delete-btn" data-id="<?= $testes['CategoryID'] ?>">Delete</button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -97,6 +100,21 @@
                 }
             ]
         });
+
+        <?php foreach ($tes as $testes) : ?>
+                        <tr>
+                            <td><?= $testes['CategoryName']; ?></td>
+                            <td><?= $testes['CategoryID']; ?></td>
+                            <td>
+                                <a href="<?= base_url('category/edit/' . $testes['CategoryID']); ?>" class="btn btn-warning btn-circle btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="<?= base_url('category/delete/' . $testes['CategoryID']); ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
     });
 </script>
 <?php $this->endSection('script') ?>

@@ -92,7 +92,7 @@ $this->extend('layout/main') ?>
                                 <th><?= $testes['Price']; ?></th>
                                 <td>
                                     <!-- Tombol Edit -->
-                                    <a href="<?= site_url('item/edit/' . $testes['ItemID']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="<?= site_url('inventaris/edit/' . $testes['ItemID']); ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                     <!-- Tombol Hapus -->
                                     <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">
