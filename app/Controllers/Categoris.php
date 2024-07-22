@@ -18,7 +18,7 @@ class Categoris extends BaseController
     public function index()
     {
         $data['tes'] = $this->category->findAll();
-        return view('categoris', $data);
+        return view('web/categories/categoris', $data);
     }
     public function fetchData()
     {
@@ -30,7 +30,7 @@ class Categoris extends BaseController
     public function create()
     {
 
-        return view('web/addcategory');
+        return view('web/categories/addcategory');
     }
     public function category_store()
     {
@@ -57,8 +57,9 @@ class Categoris extends BaseController
         $session->setFlashdata('success', 'Category added successfully!');
         return redirect()->to('/');
     }
-    public function location()
+    public function edit($id)
     {
-        return view('web/addlocation');
+        $data['kategori'] = $this->category->find($id);
+        return view('web/categories/edit', $data);
     }
 }

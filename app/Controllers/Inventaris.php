@@ -6,19 +6,21 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ItemModel;
 use App\Models\CategoryModel;
+use App\Models\LocationModel;
 
 class Inventaris extends BaseController
 {
-    var $model;
+    var $model, $category, $locationModel;
     function __construct()
     {
         $this->model = new ItemModel();
-        $this->model = new ItemModel();
+        $this->category = new CategoryModel();
+        $this->locationModel = new LocationModel();
     }
     public function index()
     {
         $data['tes'] = $this->model->findAll();
-        return view('inventaris', $data);
+        return view('web/inventaris/index', $data);
     }
     public function fetchData()
     {
@@ -28,9 +30,13 @@ class Inventaris extends BaseController
     }
     public function add()
     {
-        return view('web/addinventaris');
-    }
+        $data = [
+            'categories' => $this->category->findAll(),
+            'locations' => $this->locationModel->findAll()
 
+        ];
+        return view('web/inventaris/addinventaris', $data);
+    }
 
 
     public function create()
@@ -71,7 +77,7 @@ class Inventaris extends BaseController
 
         $itemModel->save($data);
         $session->setFlashdata('success', 'Inventaris added successfully!');
-        return redirect()->to('/');
+        return redirect()->to('inventaris');
     }
     public function category_store()
     {
@@ -88,8 +94,6 @@ class Inventaris extends BaseController
             $session->setFlashdata('errors', $this->validator->getErrors());
             return redirect()->back()->withInput();
         }
-
-        // Simpan data kategori
         $data = [
             'CategoryName' => $this->request->getVar('CategoryName')
         ];
@@ -108,9 +112,27 @@ class Inventaris extends BaseController
         $id = $this->request->getPost('ItemID');
         $model->delete($id);
 
-        return redirect()->to('/index');
+        return redirect()->to('inventaris/index');
     }
     public function edit($id)
     {
+        $data['inventaris'] = $this->model->find($id);
+        return view('web/inventaris/edit', $data);
+    }
+
+    public function inventaris_update($id)
+    {
+        $data = [
+            'ItemName' => $this->request->getPost('ItemName'),
+            'CategoryID' => $this->request->getPost('CategoryID'),
+            'LocationID' => $this->request->getPost('LocationID'),
+            'Quantity' => $this->request->getPost('Quantity'),
+            'PurchaseDate' => $this->request->getPost('PurchaseDate'),
+            'Price' => $this->request->getPost('Price'),
+        ];
+
+        $this->model->update($id, $data);
+
+        return redirect()->to(base_url('inventaris'));
     }
 }

@@ -21,30 +21,33 @@
         <!-- <hr class="sidebar-divider my-0"> -->
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>dashboard/index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+        <li class="nav-item dashboard">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard/index">
+                <img class="img-profile1 rounded-circle" src="<?= base_url() ?>image/icon/dashboard.png">
+                <span>Dashboard</span>
+            </a>
         </li>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>categoris/index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Categories</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>location/index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Location</span></a>
-        </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>inventaris/index">
-                <i class="fas fa-fw fa-table"></i>
+                <img class="img-profile1 rounded-circle" src="<?= base_url() ?>image/icon/material-management.png">
                 <span>Inventaris</span></a>
         </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>categoris/index">
+                <img class="img-profile1 rounded-circle" src="<?= base_url() ?>image/icon/categories.png">
+                <span>Categories</span></a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>location/index">
+                <img class="img-profile1 rounded-circle" src="<?= base_url() ?>image/icon/location.png">
+                <span>Location</span></a>
+        </li>
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

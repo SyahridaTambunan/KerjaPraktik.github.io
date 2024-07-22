@@ -10,56 +10,82 @@ use App\Models\CategoryModel;
 
 class Location extends BaseController
 {
-    var $model, $location;
+    var $model, $locationModel;
     function __construct()
     {
         $this->model = new ItemModel();
-        $this->location = new LocationModel();
+        $this->locationModel = new LocationModel();
     }
     public function index()
     {
-        $data['tes'] = $this->location->findAll();
-        return view('location', $data);
-    }
-    public function fetchData()
-    {
-        $itemModel = new ItemModel();
-        $data = $itemModel->findAll();
-        return json_encode($data);
+        $data['tes'] = $this->locationModel->findAll();
+        return view('web/location/location', $data);
     }
 
     public function create()
     {
-
-        return view('web/addcategory');
+        return view('web/location/addlocation');
     }
-    public function category_store()
+    public function location_store()
     {
+        if ($this->validate([
+            'LocationName' => 'required|min_length[3]',
+            'LocationDescription' => 'required|min_length[5]',
+        ])) {
+            $data = [
+                'LocationName' => $this->request->getPost('LocationName'),
+                'LocationDescription' => $this->request->getPost('LocationDescription'),
+            ];
 
-        $categoryModel = new CategoryModel();
-        $session = session();
+            $this->locationModel->save($data);
 
-        // Validasi input
-        $rules = [
-            'CategoryName' => 'required|min_length[3]|max_length[255]'
-        ];
+            return redirect()->to(base_url('location/create'))->with('status', 'Data successfully added');
+        } else {
+            return redirect()->to(base_url('location/create'))->withInput()->with('errors', $this->validator->getErrors());
+        }
+    }
 
-        if (!$this->validate($rules)) {
-            $session->setFlashdata('errors', $this->validator->getErrors());
-            return redirect()->back()->withInput();
+    // Show edit form
+    public function edit($id)
+    {
+        $data['location'] = $this->locationModel->find($id);
+
+        if (!$data['location']) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Location not found');
         }
 
-        // Simpan data kategori
-        $data = [
-            'CategoryName' => $this->request->getVar('CategoryName')
-        ];
-
-        $categoryModel->save($data);
-        $session->setFlashdata('success', 'Category added successfully!');
-        return redirect()->to('/');
+        return view('location/edit', $data);
     }
-    public function location()
+
+    // Update location data
+    public function location_update($id)
     {
-        return view('web/addlocation');
+        if ($this->validate([
+            'LocationName' => 'required|min_length[3]',
+            'LocationDescripsion' => 'required|min_length[5]',
+        ])) {
+            $data = [
+                'LocationName' => $this->request->getPost('LocationName'),
+                'LocationDescripsion' => $this->request->getPost('LocationDescripsion'),
+            ];
+
+            $this->locationModel->update($id, $data);
+
+            return redirect()->to(base_url('location/edit/' . $id))->with('status', 'Data successfully updated');
+        } else {
+            return redirect()->to(base_url('location/edit/' . $id))->withInput()->with('errors', $this->validator->getErrors());
+        }
+    }
+    public function delete()
+    {
+        $id = $this->request->getPost('LocationID');
+
+        // Check if ID is valid and exists in the database
+        if ($id && $this->locationModel->find($id)) {
+            $this->locationModel->delete($id);
+            return redirect()->to(base_url('location/index'))->with('status', 'Data successfully deleted');
+        } else {
+            return redirect()->to(base_url('location/index'))->with('status', 'Invalid Location ID');
+        }
     }
 }
