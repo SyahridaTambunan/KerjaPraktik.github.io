@@ -17,7 +17,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="my-2"></div>
                         <!-- add category categories here -->
-                        <a href="<?= base_url() ?>categories/create" class="btn btn-secondary btn-icon-split">
+                        <a href="<?= base_url() ?>categoris/create" class="btn btn-secondary btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -28,10 +28,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- add category categories here -->
-
-        <!-- Pending Requests Card Example -->
 
     </div>
 </div>
@@ -45,19 +41,23 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Category Name</th>
-                        <th>Category ID</th>
-                        <th>Actions</th>
+                        <th>Kategori</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($tes as $testes) : ?>
                         <tr>
-                            <td><?= $testes['CategoryName']; ?></td>
-                            <td><?= $testes['CategoryID']; ?></td>
+                            <th><?= $testes['CategoryName']; ?></th>
                             <td>
-                                <a href="<?= base_url('categories/edit/' . $testes['CategoryID']) ?>" class="btn btn-primary btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm delete-btn" data-id="<?= $testes['CategoryID'] ?>">Delete</button>
+                                <!-- Tombol Edit -->
+                                <a href="<?= site_url('inventaris/edit/'); ?>" class="btn btn-warning btn-sm">Edit</a>
+
+                                <!-- Tombol Hapus -->
+                                <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">
+                                    <input type="hidden" name="ItemID" value="">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -69,53 +69,4 @@
 
 </div>
 
-<?php $this->section('script') ?>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            "ajax": {
-                "url": "<?= base_url('Inventaris/fetchdata') ?>",
-                "dataSrc": ""
-            },
-            "columns": [{
-                    "data": "ItemID"
-                },
-                {
-                    "data": "ItemName"
-                },
-                {
-                    "data": "CategoryID"
-                },
-                {
-                    "data": "LocationID"
-                },
-                {
-                    "data": "Quantity"
-                },
-                {
-                    "data": "PurchaseDate"
-                },
-                {
-                    "data": "Price"
-                }
-            ]
-        });
-
-        <?php foreach ($tes as $testes) : ?>
-                        <tr>
-                            <td><?= $testes['CategoryName']; ?></td>
-                            <td><?= $testes['CategoryID']; ?></td>
-                            <td>
-                                <a href="<?= base_url('category/edit/' . $testes['CategoryID']); ?>" class="btn btn-warning btn-circle btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="<?= base_url('category/delete/' . $testes['CategoryID']); ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-    });
-</script>
-<!-- /.container-fluid -->
 <?php $this->endSection() ?>

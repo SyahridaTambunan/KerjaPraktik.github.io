@@ -695,12 +695,17 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
  6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KerjaPraktik.github.io\\public\\index.php')
+<<<<<<< HEAD
 CRITICAL - 2024-07-22 08:22:36 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+=======
+CRITICAL - 2024-07-22 08:27:55 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+>>>>>>> 2358d9a285e84459f09245627bfefd4cc88cf825
 in APPPATH\Config\Routes.php on line 23.
  1 SYSTEMPATH\CodeIgniter.php(811): CodeIgniter\Router\RouteCollection->loadRoutes()
  2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
  3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+<<<<<<< HEAD
  5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\inventaris\\public\\index.php')
 INFO - 2024-07-22 08:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-07-22 08:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -885,3 +890,22 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
 INFO - 2024-07-22 08:59:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-07-22 08:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-07-22 08:59:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+=======
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KerjaPraktik.github.io\\public\\index.php')
+CRITICAL - 2024-07-22 08:27:55 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+in APPPATH\Config\Routes.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(811): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KerjaPraktik.github.io\\public\\index.php')
+INFO - 2024-07-22 08:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-22 08:57:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+>>>>>>> 2358d9a285e84459f09245627bfefd4cc88cf825
+CRITICAL - 2024-07-22 09:02:36 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+in APPPATH\Config\Routes.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(811): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\inventaris\\public\\index.php')
