@@ -32,3 +32,7 @@ $routes->post('location/delete', 'Location::delete');
 $routes->post('location/location_update/(:num)', 'Location::location_update/$1');
 
 $routes->get('items/sum_price', 'Items::sumPrice');
+
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+});

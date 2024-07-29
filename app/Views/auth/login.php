@@ -18,7 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-       
+
     </style>
 
 </head>
@@ -33,7 +33,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img class="img-profile" src="<?= base_url() ?>assets/img/bg2login.png" alt="logo login">
+                                <img class="img-profile" src="<?= base_url() ?>assets/img/bgloginnew.png" alt="logo login">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">

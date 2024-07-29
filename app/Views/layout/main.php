@@ -10,6 +10,16 @@
     <meta name="author" content="">
 
     <title>Inventory - Dashboard</title>
+    <!-- Untuk favicon.ico -->
+    <link rel="icon" href="/icon/favicon.ico" type="image/x-icon">
+
+    <!-- Untuk favicon.png -->
+    <link rel="icon" href="/icon/favicon.png" type="image/png">
+
+    <!-- Untuk favicon.svg -->
+    <link rel="icon" href="/icon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/icon/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
+
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

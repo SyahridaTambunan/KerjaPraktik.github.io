@@ -20,6 +20,15 @@ class Inventaris extends BaseController
     public function index()
     {
         $data['tes'] = $this->model->findAll();
+        $data['kategori'] = $this->category->findAll();
+        $data['lokasi'] = $this->locationModel->findAll();
+
+        foreach ($data['tes'] as &$item) {
+            $category = $this->category->getCategoryNameById($item['CategoryID']);
+            $location = $this->locationModel->getLocationNameById($item['LocationID']);
+            $item['CategoryName'] = $category ? $category['CategoryName'] : 'Unknown';
+            $item['LocationName'] = $location ? $location['LocationName'] : 'Unknown';
+        }
         return view('web/inventaris/index', $data);
     }
     public function fetchData()

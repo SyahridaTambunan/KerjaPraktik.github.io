@@ -15,4 +15,9 @@ class LocationModel extends Model
     protected $allowedFields    = [
         'LocationName', 'LocationDescription'
     ];
+
+    public function getLocationNameById($id)
+    {
+        return $this->where('LocationID', $id)->first();
+    }
 }
