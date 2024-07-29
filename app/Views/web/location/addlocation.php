@@ -17,7 +17,7 @@
     <form method="post" action="<?= base_url('location/location_store') ?>">
         <div class="form-group">
             <label for="LocationName">Nama Lokasi</label>
-            <input type="text" class="form-control" name="LocationName" id="LocationName" value="<?= old('LocationName') ?>" required>
+            <input type="text" class="form-control" name="LocationName" id="LocationID" value="<?= old('LocationID') ?>" required>
         </div>
         <div class="form-group">
             <label for="LocationDescripsion">Deskripsi Lokasi</label>

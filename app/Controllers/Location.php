@@ -55,11 +55,11 @@ class Location extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Location not found');
         }
 
-        return view('location/edit', $data);
+        return view('web/location/edit', $data);
     }
 
     // Update location data
-    public function location_update($id)
+    public function location_edit($id)
     {
         if ($this->validate([
             'LocationName' => 'required|min_length[3]',
@@ -79,29 +79,21 @@ class Location extends BaseController
     }
     public function delete()
     {
-        $id = $this->request->getPost('LocationID');
-
-        // Check if ID is valid and exists in the database
-        if ($id && $this->locationModel->find($id)) {
-            $this->locationModel->delete($id);
-            return redirect()->to(base_url('location/index'))->with('status', 'Data successfully deleted');
-        } else {
-            return redirect()->to(base_url('location/index'))->with('status', 'Invalid Location ID');
-        }
-    }
-    public function update($location)
-    {
         $model = new LocationModel();
+        $id = $this->request->getPost('LocationID');
+        $model->delete($id);
 
+        return redirect()->to('location/index');
+    }
+    public function location_update($id)
+    {
         $data = [
+            'LocationID' => $this->request->getPost('LocationID'),
             'LocationName' => $this->request->getPost('LocationName'),
-            'LacationDescription' => $this->request->getPost('LocationDescription'),
         ];
 
-        if ($model->update($location, $data)) {
-            return redirect()->to('/inventaris')->with('success', 'Data berhasil diperbarui');
-        } else {
-            return redirect()->back()->with('errors', $model->errors())->withInput();
-        }
+        $this->locationModel->update($id, $data);
+
+        return redirect()->to(base_url('location'));
     }
 }

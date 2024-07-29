@@ -58,9 +58,10 @@
                                 <a href="<?= base_url('location/edit/' . $testes['LocationID']); ?>" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="<?= base_url('location/delete/' . $testes['LocationID']); ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <form action="<?= site_url('location/delete'); ?>" method="post" style="display:inline;">
+                                        <input type="hidden" name="LocationID" value="<?= $testes['LocationID']; ?>">
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                    </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

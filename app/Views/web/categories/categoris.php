@@ -51,11 +51,11 @@
                             <th><?= $testes['CategoryName']; ?></th>
                             <td>
                                 <!-- Tombol Edit -->
-                                <a href="<?= site_url('inventaris/edit/'); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="<?= site_url('categoris/edit/' .$testes['CategoryID']); ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                 <!-- Tombol Hapus -->
-                                <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">
-                                    <input type="hidden" name="ItemID" value="">
+                                <form action="<?= site_url('categoris/delete'); ?>" method="post" style="display:inline;">
+                                    <input type="hidden" name="CategoryID" value="<?= $testes['CategoryID']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                                 </form>
                             </td>

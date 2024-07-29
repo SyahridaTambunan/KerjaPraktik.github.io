@@ -16,7 +16,7 @@
     <form method="post" action="<?= base_url('location/update/' . $location['LocationID']) ?>">
         <div class="mb-3">
             <label for="LocationName" class="form-label">Location Name</label>
-            <input type="text" class="form-control" id="LocationName" name="LocationName" value="<?= esc($location['LocationName']) ?>">
+            <input type="text" class="form-control" id="LocationID" name="LocationID" value="<?= esc($location['LocationID']) ?>">
         </div>
         <div class=" mb-3">
             <label for="LocationDescription" class="form-label">Location Description</label>

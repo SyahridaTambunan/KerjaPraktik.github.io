@@ -16,7 +16,7 @@
     <form method="post" action="<?= base_url('inventaris/category_store') ?>">
         <div class="form-group">
             <label for="CategoryName">Category Name</label>
-            <input type="text" class="form-control" name="CategoryName" id="CategoryName" value="<?= old('CategoryName') ?>" required>
+            <input type="text" class="form-control" name="CategoryName" id="CategoryID" value="<?= old('CategoryID') ?>" required>
         </div>
         <button type="submit" class="btn btn-primary">Add data</button>
     </form>
