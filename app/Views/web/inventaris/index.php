@@ -1,7 +1,5 @@
 <?php
 
-use App\Controllers\Inventaris;
-
 $this->extend('layout/main') ?>
 
 <?php $this->section('content') ?>
@@ -12,8 +10,10 @@ $this->extend('layout/main') ?>
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inventory</h1>
+            <h1 class="h3 mb-0 text-gray-800">Inventaris</h1>
+            <a href="<?= base_url() ?>/Inventaris/printPDF" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Print PDF</a>
         </div>
+
 
         <div class="row">
             <div class="col-xl-3 col-md-6 mb-4">
@@ -46,31 +46,29 @@ $this->extend('layout/main') ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Item ID</th>
-                            <th>Item Name</th>
-                            <th>Category ID</th>
-                            <th>Location ID</th>
-                            <th>Quantity</th>
-                            <th>Purchase Date</th>
-                            <th>Price</th>
-                            <th>Actions</th> <!-- Kolom untuk aksi -->
+                            <th>No</th>
+                            <th>Item</th>
+                            <th>Kategori</th>
+                            <th>Lokasi</th>
+                            <th>Jumlah</th>
+                            <th>Tanggal Pembelian</th>
+                            <th>Harga</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $no = 1; ?>
                         <?php foreach ($tes as $testes) : ?>
                             <tr>
-                                <th><?= $testes['ItemID']; ?></th>
-                                <th><?= $testes['ItemName']; ?></th>
-                                <th><?= $testes['CategoryID']; ?></th>
-                                <th><?= $testes['LocationID']; ?></th>
-                                <th><?= $testes['Quantity']; ?></th>
-                                <th><?= $testes['PurchaseDate']; ?></th>
-                                <th><?= $testes['Price']; ?></th>
+                                <td><?= $no++; ?></td>
+                                <td><?= $testes['ItemName']; ?></td>
+                                <td><?= $testes['CategoryName']; ?></td>
+                                <td><?= $testes['LocationName']; ?></td>
+                                <td><?= $testes['Quantity']; ?></td>
+                                <td><?= $testes['PurchaseDate']; ?></td>
+                                <td>Rp.<?= $testes['Price']; ?></td>
                                 <td>
-                                    <!-- Tombol Edit -->
                                     <a href="<?= site_url('inventaris/edit/' . $testes['ItemID']); ?>" class="btn btn-warning btn-sm">Edit</a>
-
-                                    <!-- Tombol Hapus -->
                                     <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">
                                         <input type="hidden" name="ItemID" value="<?= $testes['ItemID']; ?>">
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>

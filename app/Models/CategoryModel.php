@@ -16,4 +16,9 @@ class CategoryModel extends Model
         'CategoryName'
     ];
 
+    public function getCategoryNameById($id)
+    {
+        return $this->where('CategoryID', $id)->first();
+    }
+
 }

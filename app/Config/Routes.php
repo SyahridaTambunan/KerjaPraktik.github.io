@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->setAutoRoute(true);
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', 'Login::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/logout', 'Login::logout');
 $routes->post('/Login/authenticate', 'Login::authenticate');
@@ -32,3 +32,7 @@ $routes->post('location/delete', 'Location::delete');
 $routes->post('location/location_update/(:num)', 'Location::location_update/$1');
 
 $routes->get('items/sum_price', 'Items::sumPrice');
+
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+});
