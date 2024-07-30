@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ItemModel;
 use App\Models\CategoryModel;
 use App\Models\LocationModel;
+use Dompdf\Dompdf;
 
 class Inventaris extends BaseController
 {
@@ -30,6 +31,29 @@ class Inventaris extends BaseController
             $item['LocationName'] = $location ? $location['LocationName'] : 'Unknown';
         }
         return view('web/inventaris/index', $data);
+    }
+    public function printPDF()
+    {
+        $data['tes'] = $this->model->findAll();
+
+        foreach ($data['tes'] as &$item) {
+            $category = $this->category->getCategoryNameById($item['CategoryID']);
+            $location = $this->locationModel->getLocationNameById($item['LocationID']);
+            $item['CategoryName'] = $category ? $category['CategoryName'] : 'Unknown';
+            $item['LocationName'] = $location ? $location['LocationName'] : 'Unknown';
+        }
+
+        // Load view sebagai string
+        $html = view('web/inventaris/printpdf', $data);
+
+        // Inisialisasi Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+
+        // Output PDF
+        $dompdf->stream('inventaris.pdf', ['Attachment' => 0]);
     }
     public function fetchData()
     {

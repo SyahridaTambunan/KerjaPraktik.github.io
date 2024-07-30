@@ -1,7 +1,5 @@
 <?php
 
-use App\Controllers\Inventaris;
-
 $this->extend('layout/main') ?>
 
 <?php $this->section('content') ?>
@@ -12,8 +10,10 @@ $this->extend('layout/main') ?>
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inventory</h1>
+            <h1 class="h3 mb-0 text-gray-800">Inventaris</h1>
+            <a href="<?= base_url() ?>/Inventaris/printPDF" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Print PDF</a>
         </div>
+
 
         <div class="row">
             <div class="col-xl-3 col-md-6 mb-4">
@@ -66,7 +66,7 @@ $this->extend('layout/main') ?>
                                 <td><?= $testes['LocationName']; ?></td>
                                 <td><?= $testes['Quantity']; ?></td>
                                 <td><?= $testes['PurchaseDate']; ?></td>
-                                <td><?= $testes['Price']; ?></td>
+                                <td>Rp.<?= $testes['Price']; ?></td>
                                 <td>
                                     <a href="<?= site_url('inventaris/edit/' . $testes['ItemID']); ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="<?= site_url('inventaris/delete'); ?>" method="post" style="display:inline;">

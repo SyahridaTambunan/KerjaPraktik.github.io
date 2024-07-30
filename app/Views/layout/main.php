@@ -28,17 +28,59 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-        .img-profile1 {
-            width: 10px;
-            /* Ukuran gambar */
-            height: 30px;
-            /
-            /* Menjaga rasio aspek gambar */
+        .button-container {
+            display: flex;
+            gap: 10px;
+            /* Jarak antara tombol */
         }
 
-        .rounded-circle {
-            border-radius: 50%;
-            /* Membuat gambar bulat */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            /* Mengatur jarak antara ikon dan teks */
+            padding: 10px 15px;
+            /* Mengatur padding dalam tombol */
+            font-size: 14px;
+            /* Mengatur ukuran font */
+            text-decoration: none;
+            /* Menghapus garis bawah dari link */
+            border-radius: 5px;
+            /* Menambahkan border-radius */
+            transition: background-color 0.3s;
+            /* Animasi transisi background-color */
+        }
+
+        .btn-icon .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon .text {
+            margin-left: 5px;
+            /* Memberikan jarak antara ikon dan teks */
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: 1px solid #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
         }
     </style>
 

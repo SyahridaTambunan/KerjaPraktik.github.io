@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->setAutoRoute(true);
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', 'Login::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/logout', 'Login::logout');
 $routes->post('/Login/authenticate', 'Login::authenticate');
